@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bookkeeping">
         <activity
-            android:name=".MainActivity"
+            android:name=".login"
             android:label="@string/app_name"
             android:theme="@style/Theme.Bookkeeping.NoActionBar">
             <intent-filter>
