@@ -1,5 +1,6 @@
 package com.example.bookkeeping;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -38,6 +39,8 @@ public class login extends AppCompatActivity {
         System.out.println(password.getText().toString());
          if ((username.getText().toString().equals(tempUsername)) & (password.getText().toString().equals(tempPassword))) {
             System.out.println("Sisään");
+             Intent intent = new Intent(this, register.class);
+             startActivity(intent);
         }
 
     }
