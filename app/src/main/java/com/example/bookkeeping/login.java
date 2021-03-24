@@ -17,7 +17,7 @@ public class login extends AppCompatActivity {
     Button loginButton;
     EditText username;
     EditText password;
-
+    Button switchscreenbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -26,6 +26,8 @@ public class login extends AppCompatActivity {
         username = (EditText) findViewById(R.id.username_);
         password = (EditText) findViewById(R.id.password_);
         loginButton = findViewById(R.id.loginButton);
+        switchscreenbtn = findViewById(R.id.switchscreenbtn);
+
 
     }
 
@@ -75,5 +77,11 @@ public class login extends AppCompatActivity {
         }
 
     }
+    public void register(View v) {
+        startActivity(new Intent(login.this, register.class));
+
+
+    }
+
 }
 
