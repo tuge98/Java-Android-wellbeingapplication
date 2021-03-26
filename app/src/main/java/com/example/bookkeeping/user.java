@@ -1,5 +1,7 @@
 package com.example.bookkeeping;
 
+
+//Creating user class for Room database
 public class user {
     private String username1;
     private String password1;

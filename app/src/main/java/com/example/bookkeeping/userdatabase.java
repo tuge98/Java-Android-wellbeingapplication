@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
-
+//Database class definition
 @Database(entities = {userdetails.class}, version = 1)
 public abstract class userdatabase extends RoomDatabase {
     private static final String dbName = "user";
@@ -19,7 +19,7 @@ public abstract class userdatabase extends RoomDatabase {
         }
         return userdatabase;
     }
-
+//Contacts database interface
     public abstract dbinterface dbinterface(); {
 
     }

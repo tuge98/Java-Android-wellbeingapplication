@@ -5,14 +5,15 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+//defining room entity
 @Entity(tableName = "users")
 public class userdetails {
     @PrimaryKey(autoGenerate =  true)
     Integer id;
 
 
-    @ColumnInfo(name = "userid")
-    String userid22;
+    @ColumnInfo(name = "userid",typeAffinity = ColumnInfo.BLOB)
+    byte[] userid22;
 
     @ColumnInfo(name = "username")
     String username;
@@ -39,11 +40,11 @@ public class userdetails {
         this.password = password;
     }
 
-    public void setuserIDRIVI(String useridrivi){
+    public void setuserIDRIVI(byte[] useridrivi){
         this.userid22 = useridrivi;
     }
 
-    public String getuserIDRIVI(){
+    public byte[] getuserIDRIVI(){
         return userid22;
     }
 }

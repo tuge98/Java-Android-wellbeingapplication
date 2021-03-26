@@ -12,3 +12,6 @@ public class menu extends AppCompatActivity {
         setContentView(R.layout.s3_menu);
     }
 }
+
+
+//Menu class
