@@ -12,11 +12,9 @@ public interface dbinterface {
     @Insert
     void registerUser(userdetails userdetails);
 
-    //@Query("SELECT users.username, users.password, users.userid from users where userName=(:username) and password=(:password)")
-    //userdetails login(String username, String password);
+
     @Query("SELECT users.username, users.password, users.userid from users where userName=(:username)")
     userdetails login(String username);
-
 
     @Query("DELETE FROM users")
     void deleteAll();
