@@ -12,7 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bookkeeping"
         android:usesCleartextTraffic="true">
-        <activity android:name=".calculatecarbonfootPrint"></activity>
+        <activity android:name=".carbonfootprintSummary"></activity>
+        <activity android:name=".calculatecarbonfootPrint" />
         <activity android:name=".menu" />
         <activity
             android:name=".login"

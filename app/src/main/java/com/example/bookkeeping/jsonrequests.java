@@ -13,28 +13,39 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
 public class jsonrequests{
 
     //method to readJSON objects
-    public void readJSON(String urli){
+    public List<Double> readJSON(String urli){
         String json = getJSON(urli);
-        System.out.println("JSON: "+ json);
+        //System.out.println("JSON: "+ json);
+
+        ArrayList<Double> jsonlist = new ArrayList<Double>();
 
         if(json != null){
             try{
-                JSONArray jsonArray = new JSONArray(json);
-                for(int i = 0; i < jsonArray.length();i++){
-                    JSONObject jobject = jsonArray.getJSONObject(i);
-                    System.out.println("#######"+(i+1)+"####¤#");
-                    System.out.println(jobject.getBoolean("Total"));
+                //JSONArray jsonArray = new JSONArray(json);
+                JSONObject jsonObject = new JSONObject(json);
+                //JSONArray jsonArray = jsonObject.getJSONArray("Total");
+                for(int i = 0; i <jsonObject.names().length() ; i++){
+                    //JSONObject jobject = jsonArray.getJSONObject(i);
+                    //JSONObject jobject = jsonArray.getJSONObject(i);
+                    //System.out.println("#######"+(i+1)+"####¤#");
+                    //System.out.println(jobject.getBoolean("Total"));
+                    //jsonlist.add(jobject.toString());
+                    System.out.println(jsonObject.get(jsonObject.names().getString(i)));
+                    jsonlist.add((Double) jsonObject.get(jsonObject.names().getString(i)));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+        return jsonlist;
     }
     //performs a get request to ilmastodieetti json api
     public String getJSON(String urli) {
