@@ -19,8 +19,8 @@ import javax.net.ssl.HttpsURLConnection;
 public class jsonrequests{
 
     //method to readJSON objects
-    public void readJSON(){
-        String json = getJSON();
+    public void readJSON(String urli){
+        String json = getJSON(urli);
         System.out.println("JSON: "+ json);
 
         if(json != null){
@@ -37,10 +37,10 @@ public class jsonrequests{
         }
     }
     //performs a get request to ilmastodieetti json api
-    public String getJSON() {
+    public String getJSON(String urli) {
         String response = null;
         try {
-            URL url = new URL("https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=omnivore&query.beefLevel=24&query.fishLevel=24&query.porkPoultryLevel=24&query.dairyLevel=24&query.cheeseLevel=24&query.riceLevel=24&query.eggLevel=24&query.winterSaladLevel=24&query.restaurantSpending=24");
+            URL url = new URL(urli);
             HttpURLConnection conn = (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             InputStream in = new BufferedInputStream(conn.getInputStream());
@@ -64,7 +64,7 @@ public class jsonrequests{
         } catch (IOException e) {
             e.printStackTrace();
         } finally{
-            System.out.println("Getjson toimii");
+            System.out.println("API working properly!");
         }
 
         return response;

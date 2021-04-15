@@ -66,9 +66,7 @@ public class login extends AppCompatActivity {
                     byte[] byteconverter = userdetails.getuserIDRIVI();
 
                     System.out.println(byteconverter.toString());
-
                     String test_final_password = hashingClass.getSecurePassword(passwordtocheck, byteconverter);
-
                     String test_final_username = userdetails.getUsername();
 
 
