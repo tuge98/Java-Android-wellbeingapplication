@@ -39,7 +39,7 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-    annotationProcessor 'androidx.room:room-compiler:2.2.5'
+    annotationProcessor 'androidx.room:room-compiler:2.2.6'
     implementation "androidx.room:room-runtime:2.2.6"
-    annotationProcessor "androidx.room:room-compiler:2.2.6"
+    implementation 'com.jjoe64:graphview:4.2.2'
 }
