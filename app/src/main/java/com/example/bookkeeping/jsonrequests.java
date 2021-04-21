@@ -13,34 +13,45 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.net.ssl.HttpsURLConnection;
 
 public class jsonrequests{
 
     //method to readJSON objects
-    public void readJSON(){
-        String json = getJSON();
-        System.out.println("JSON: "+ json);
+    public List<Double> readJSON(String urli){
+        String json = getJSON(urli);
+        //System.out.println("JSON: "+ json);
+
+        ArrayList<Double> jsonlist = new ArrayList<Double>();
 
         if(json != null){
             try{
-                JSONArray jsonArray = new JSONArray(json);
-                for(int i = 0; i < jsonArray.length();i++){
-                    JSONObject jobject = jsonArray.getJSONObject(i);
-                    System.out.println("#######"+(i+1)+"####¤#");
-                    System.out.println(jobject.getBoolean("Total"));
+                //JSONArray jsonArray = new JSONArray(json);
+                JSONObject jsonObject = new JSONObject(json);
+                //JSONArray jsonArray = jsonObject.getJSONArray("Total");
+                for(int i = 0; i <jsonObject.names().length() ; i++){
+                    //JSONObject jobject = jsonArray.getJSONObject(i);
+                    //JSONObject jobject = jsonArray.getJSONObject(i);
+                    //System.out.println("#######"+(i+1)+"####¤#");
+                    //System.out.println(jobject.getBoolean("Total"));
+                    //jsonlist.add(jobject.toString());
+                    System.out.println(jsonObject.get(jsonObject.names().getString(i)));
+                    jsonlist.add((Double) jsonObject.get(jsonObject.names().getString(i)));
                 }
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+        return jsonlist;
     }
     //performs a get request to ilmastodieetti json api
-    public String getJSON() {
+    public String getJSON(String urli) {
         String response = null;
         try {
-            URL url = new URL("https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=omnivore&query.beefLevel=24&query.fishLevel=24&query.porkPoultryLevel=24&query.dairyLevel=24&query.cheeseLevel=24&query.riceLevel=24&query.eggLevel=24&query.winterSaladLevel=24&query.restaurantSpending=24");
+            URL url = new URL(urli);
             HttpURLConnection conn = (HttpsURLConnection) url.openConnection();
             conn.setRequestMethod("GET");
             InputStream in = new BufferedInputStream(conn.getInputStream());
@@ -64,7 +75,7 @@ public class jsonrequests{
         } catch (IOException e) {
             e.printStackTrace();
         } finally{
-            System.out.println("Getjson toimii");
+            System.out.println("API working properly!");
         }
 
         return response;
