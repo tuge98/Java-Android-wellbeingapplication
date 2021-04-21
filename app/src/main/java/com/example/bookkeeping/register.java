@@ -4,6 +4,8 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteConstraintException;
+import android.database.sqlite.SQLiteException;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,15 +53,21 @@ public class register extends AppCompatActivity {
                 Snackbar mySnackbar = Snackbar.make(v, invalidPassword, BaseTransientBottomBar.LENGTH_SHORT);
                 Boolean validPassword = passwordChecker(password1.getText().toString());
 
+
+                //Snackbar mySnackbar2 = Snackbar.make(v, "Username is not unique, try another", BaseTransientBottomBar.LENGTH_SHORT);
                 if (!validPassword) {
-                    System.out.println("Password must be atleast 12 characters, include 1 uppercase letter, 1 lowercase letter, a number, and a special character");
+                    System.out.println(invalidPassword);
                     //findViewById(R.id.textView4).setVisibility(View.VISIBLE);
                     mySnackbar.show();
+//                } else if (!validUsername) {
+//                    System.out.println("Username is not unique, try another");
+//                    mySnackbar2.show();
                 } else {
-                    userdetails userdetails = new userdetails();
+
+                    User user = new User(username1.getText().toString());
                     //userdetails.setuserIDRIVI(userid.getText().toString());
                     //userdetails.setPassword(password1.getText().toString());
-                    userdetails.setUsername(username1.getText().toString());
+
 
 
 
@@ -68,17 +77,35 @@ public class register extends AppCompatActivity {
                         String password1_ = hashingClass.getSecurePassword(password1.getText().toString(), salt);
                         System.out.println(password1_);
                         System.out.println("suola rekisteri; "+salt);
-                        userdetails.setuserIDRIVI(salt);
+                        user.setSalt(salt);
+                        user.setHash(password1_);
                         //String password_1;
-                        userdetails.setPassword(password1_);
+
                     } catch (NoSuchAlgorithmException e) {
                         e.printStackTrace();
                     }
-                    if (validateInput(userdetails)){
-                        userdatabase userdatabase = com.example.bookkeeping.userdatabase.getuserDatabase(getApplicationContext());
-                        final dbinterface dbinterface = userdatabase.dbinterface();
+                    if (validateInput(user)) {
+
+                            UserDao dao = UserDB.getInstance(getApplicationContext()).userDao();
+                            Runnable task = () -> {
+                                try {
+                                    dao.insert(user);
+                                } catch (SQLiteException exception) {
+                                    System.out.println("Username is already used, try another");
+                                    Snackbar usernameUsed = Snackbar.make(v, "Username is already used, try another", BaseTransientBottomBar.LENGTH_SHORT);
+                                    usernameUsed.show();
+                                }
+                            };
+
+
+                            Thread thread = new Thread(task);
+                            thread.start();
+                            thread.interrupt();
+
+
+
                         //Runnable is replaced with lambda
-                        new Thread(() -> {
+                       /* new Thread(() -> {
                             dbinterface.registerUser(userdetails);
 
                             runOnUiThread(new Runnable(){
@@ -90,6 +117,8 @@ public class register extends AppCompatActivity {
                             });
 
                         }).start();
+                        */
+
                     }else{
                         Toast.makeText(getApplicationContext(),"Remember to fill all fields!", Toast.LENGTH_SHORT).show();
 
@@ -100,11 +129,10 @@ public class register extends AppCompatActivity {
         });
     }
     //Validating inputs
-        private Boolean validateInput(userdetails userdetails){
+        private Boolean validateInput(User user){
 
-            if (userdetails.getuserIDRIVI() == null ||
-            userdetails.getPassword().isEmpty() ||
-            userdetails.getUsername().isEmpty()){
+            if (user.getUsername() == null ||
+            user.getSalt() == null) {
                 return false;
         }
         return true;
@@ -123,6 +151,9 @@ public class register extends AppCompatActivity {
         return ((password.length() >= 12) & (password.matches(".*\\d.*")) & (b) & (!password.equals(password.toLowerCase())) & (!password.equals(password.toUpperCase())));
 
     }
+
+
+
 
 }
 

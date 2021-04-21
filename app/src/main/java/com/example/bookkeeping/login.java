@@ -51,32 +51,33 @@ public class login extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Enter username and password", Toast.LENGTH_SHORT).show();
 
         } else {
-            userdatabase userdatabase = com.example.bookkeeping.userdatabase.getuserDatabase(getApplicationContext());
-            final dbinterface dbinterface = userdatabase.dbinterface();
+            UserDao dao = UserDB.getInstance(this).userDao();
+
             new Thread(new Runnable() {
                 @RequiresApi(api = Build.VERSION_CODES.KITKAT)
                 @Override
                 public void run() {
 
 
-                    userdetails userdetails = dbinterface.login(usernametocheck);//passwordtocheck
+                    User user = dao.login(usernametocheck);//passwordtocheck
+
                     //dbinterface.deleteAll();
 
-                    String passwordconverter = userdetails.getPassword();
-                    byte[] byteconverter = userdetails.getuserIDRIVI();
+                    String passwordconverter = user.getHash();
+                    byte[] byteconverter = user.getSalt();
 
-                    System.out.println(byteconverter.toString());
+                    System.out.println(passwordconverter);
 
                     String test_final_password = hashingClass.getSecurePassword(passwordtocheck, byteconverter);
 
-                    String test_final_username = userdetails.getUsername();
+                    String test_final_username = user.getUsername();
 
 
 
 
                     if(usernametocheck.equals(test_final_username) && passwordconverter.equals(test_final_password)){
 
-                            startActivity(new Intent(login.this, menu.class));
+                            startActivity(new Intent(login.this, menu.class).putExtra("username", usernametocheck));
                     }else{
                     runOnUiThread(new Runnable() {
                             @Override
