@@ -18,7 +18,7 @@
         <activity android:name=".menu" />
         <activity
             android:name=".login"
-            android:label="@string/app_name"
+            android:label="healthapp"
             android:theme="@style/Theme.Bookkeeping.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name=".register"
-            android:label="@string/app_name" />
+            android:label="healthapp" />
     </application>
 
 </manifest>

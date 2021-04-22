@@ -38,7 +38,7 @@ public class jsonrequests{
                     //System.out.println("#######"+(i+1)+"####¤#");
                     //System.out.println(jobject.getBoolean("Total"));
                     //jsonlist.add(jobject.toString());
-                    System.out.println(jsonObject.get(jsonObject.names().getString(i)));
+                    //System.out.println(jsonObject.get(jsonObject.names().getString(i)));
                     jsonlist.add((Double) jsonObject.get(jsonObject.names().getString(i)));
                 }
             } catch (JSONException e) {

@@ -12,7 +12,8 @@ import java.util.List;
 
 public class calculatecarbonfootPrint extends AppCompatActivity {
     jsonrequests jsoni = new jsonrequests();
-    public List<String> jsonlist2;
+    List<Double> jsonlist2;
+
 
     EditText editbeefLevel, editfishLevel, editporkpoultryLevel, editdairyLevel, editcheeseLevel,editriceLevel, editeggLevel, editwintersaladLevel, editrestaurantLevel;
 
@@ -53,7 +54,7 @@ public class calculatecarbonfootPrint extends AppCompatActivity {
 
         String new_url = String.format("https://ilmastodieetti.ymparisto.fi/ilmastodieetti/calculatorapi/v1/FoodCalculator?query.diet=omnivore&query.beefLevel=%1$s&query.fishLevel=%2$s&query.porkPoultryLevel=%3$s&query.dairyLevel=%4$s&query.cheeseLevel=%5$s&query.riceLevel=%6$s&query.eggLevel=%7$s&query.winterSaladLevel=%8$s&query.restaurantSpending=%9$s",beef_val,fish_val,pork_val,dairy_val,cheese_val,rice_val,egg_val,wintersalad_val,restaurant_val);
         System.out.println(new_url);
-        List<Double> jsonlist2 = jsoni.readJSON(new_url);
+        jsonlist2 = jsoni.readJSON(new_url);
 
 /*
         for(int i=0; i < jsonlist2.size(); i++){
@@ -67,8 +68,14 @@ public class calculatecarbonfootPrint extends AppCompatActivity {
     public void checkcarbonfootprintSummary(View w) {
        // Intent intent = new Intent(calculatecarbonfootPrint.this, carbonfootprintSummary.class);
 
-
-        startActivity(new Intent(calculatecarbonfootPrint.this, carbonfootprintSummary.class));
+        Intent intent = new Intent(calculatecarbonfootPrint.this, carbonfootprintSummary.class);
+        //Bundle b = new Bundle();
+        intent.putExtra("Dairy", jsonlist2.get(0));
+        intent.putExtra("Meat", jsonlist2.get(1));
+        intent.putExtra("Plant", jsonlist2.get(2));
+        intent.putExtra("Restaurant", jsonlist2.get(3));
+        intent.putExtra("Total", jsonlist2.get(4));
+        startActivity(intent);
 
     }
 }
