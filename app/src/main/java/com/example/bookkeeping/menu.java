@@ -15,14 +15,24 @@ import java.io.IOException;
 
 
 public class menu extends AppCompatActivity {
+    String currentUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.s3_menu);
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                currentUsername= null;
+            } else {
+                currentUsername= extras.getString("username");
+            }
+        } else {
+            currentUsername= (String) savedInstanceState.getSerializable("username");
+        }
 
-        //modifying strick policies to permit all
-
+        System.out.println("tässä on kayttaja: " + currentUsername);
 
 
 
@@ -32,6 +42,11 @@ public class menu extends AppCompatActivity {
 
     public void switchtoCFP(View v){
         startActivity(new Intent(menu.this, calculatecarbonfootPrint.class));
+    }
+
+    public void switchToWeightScreen(View v) {
+        System.out.println(currentUsername);
+        startActivity(new Intent(menu.this, WeightScreen.class).putExtra("username", currentUsername));
     }
 }
 
