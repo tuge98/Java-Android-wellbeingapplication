@@ -40,7 +40,7 @@ public class register extends AppCompatActivity {
 
         username1 = findViewById(R.id.username1);
         password1 = findViewById(R.id.password1);
-        userid = findViewById(R.id.userid);
+        //userid = findViewById(R.id.userid);
         register_button = findViewById(R.id.register_button);
         switchbacktologin= findViewById(R.id.switchbacktologin);;
 
