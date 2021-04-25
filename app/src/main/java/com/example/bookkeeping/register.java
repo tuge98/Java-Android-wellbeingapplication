@@ -90,6 +90,9 @@ public class register extends AppCompatActivity {
                             Runnable task = () -> {
                                 try {
                                     dao.insert(user);
+                                    Snackbar register_msg = Snackbar.make(v, "Registering was successful, please log in", BaseTransientBottomBar.LENGTH_SHORT);
+                                    register_msg.show();
+
                                 } catch (SQLiteException exception) {
                                     System.out.println("Username is already used, try another");
                                     Snackbar usernameUsed = Snackbar.make(v, "Username is already used, try another", BaseTransientBottomBar.LENGTH_SHORT);

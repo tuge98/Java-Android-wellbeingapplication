@@ -6,60 +6,60 @@
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/weightinputfield"
+        android:id="@+id/AgeIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:ems="10"
+        android:hint="Age"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/HeightIn" />
+
+    <EditText
+        android:id="@+id/HeightIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:ems="10"
+        android:hint="Height"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <TextView
+        android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
-        android:ems="10"
-        android:hint="Insert weight in kg"
-        android:inputType="textPersonName"
+        android:text="Insert your height and age"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/addweightbutton"
-        android:layout_width="205dp"
-        android:layout_height="46dp"
-        android:layout_marginTop="20dp"
-        android:onClick="addWeightToDB"
-        android:text="Add Weight"
+        android:id="@+id/button"
+        android:layout_width="199dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="50dp"
+        android:onClick="insertInfo"
+        android:text="Add information"
         app:backgroundTint="#4CAF50"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weightinputfield" />
-
-
-    <com.jjoe64.graphview.GraphView
-        android:id="@+id/graph"
-        android:layout_width="match_parent"
-        android:layout_height="200dip"
-        android:layout_marginBottom="30dp"
-        app:layout_constraintBottom_toTopOf="@+id/backtomenubtn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/AgeIn" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="201dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="30dp"
-        android:onClick="graphView"
-        android:text="Update Graph"
-        app:backgroundTint="#4CAF50"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addweightbutton" />
-
-    <Button
-        android:id="@+id/backtomenubtn"
+        android:id="@+id/button4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="25dp"
+        android:layout_marginBottom="50dp"
         android:background="#00FFFFFF"
         android:onClick="backToMenu"
         android:text="Back to menu"

@@ -16,6 +16,7 @@
         <activity android:name=".calculatecarbonfootPrint" />
         <activity android:name=".WeightScreen" />
         <activity android:name=".menu" />
+        <activity android:name=".InsertInfoScreen" />
         <activity
             android:name=".login"
             android:label="healthapp"

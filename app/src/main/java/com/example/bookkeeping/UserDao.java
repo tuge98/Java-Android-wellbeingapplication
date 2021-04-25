@@ -32,6 +32,9 @@ public interface UserDao {
     @Insert
     void insertWeight(Weight weight);
 
+    @Insert
+    void insertUserInfo(UserInfo userinfo);
+
     @Transaction
     @Query("SELECT * FROM user_table WHERE username = :username")
     List<UserWithWeights> getUserWithWeights(String username);
@@ -41,4 +44,11 @@ public interface UserDao {
 
     @Query("SELECT user_table.username FROM user_table WHERE username = :username")
     String registerCheck(String username);
+
+    @Transaction
+    @Query("SELECT * FROM user_table WHERE username = :username")
+    UserAndInfo getUserAndInfo(String username);
+
+
+
 }

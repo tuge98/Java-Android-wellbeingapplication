@@ -1,5 +1,6 @@
 package com.example.bookkeeping;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +24,7 @@ public class WeightScreen extends AppCompatActivity {
     String currentUsername;
     EditText weightIn;
     GraphView graph;
-    Button button;
+    Button backtomenu;
     Button button2;
     int s;
     List<Weight> w;
@@ -45,7 +46,7 @@ public class WeightScreen extends AppCompatActivity {
         graph = (GraphView) findViewById(R.id.graph);
 
         button2 = (Button) findViewById(R.id.button2);
-
+        backtomenu = (Button) findViewById(R.id.backtomenubtn);
     }
 
     // This function takes the user input and inserts it to database
@@ -81,37 +82,42 @@ public class WeightScreen extends AppCompatActivity {
             s = w.size();
             for (Weight y : w) {
 
-                System.out.println("Painotiedot: " + y.getWeight_id() + ": " + y.getWeight() + ", " + y.getDate());
-                index++;
-                if (index == s) {
-                    break;
-                }
+                System.out.println("Painotiedot: " + y.getWeight_id() + ": " + y.getWeight() + ", " + y.getDate() + "koko: " + s);
+
             }
+            DataPoint[] dataPoints = new DataPoint[s];
+            System.out.println(s);
+            for (int i = 0; i < s; i++) {
+                Double mass;
+                System.out.println("Passing");
+                if ((mass = w.get(i).getWeight()) == null) {
+                    System.out.println("numbers are out");
+                    break;
+
+                }
+                System.out.println("luvut:" + i + ", " + mass);
+                dataPoints[i] = new DataPoint(i, mass);
+
+            }
+            LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(dataPoints);
+            graph.addSeries(series);
+            graph.getViewport().setMinX(1);
+            graph.getViewport().setMaxX(10);
+            graph.getViewport().setMinY(0.0);
+            graph.getViewport().setMaxY(150.0);
         };
 
 
         Thread thread = new Thread(task);
         thread.start();
+
         thread.interrupt();
 
-        DataPoint[] dataPoints = new DataPoint[s];
-        for (int i = 0; i < s; i++) {
-            Double y;
-            if ((y = w.get(i).getWeight()) == null) {
-                System.out.println("numbers are out");
-                break;
 
-            }
-            System.out.println("luvut:" + i + ", " + y);
-            dataPoints[i] = new DataPoint(i, y);
+    }
 
-        }
-        LineGraphSeries<DataPoint> series = new LineGraphSeries<DataPoint>(dataPoints);
-        graph.addSeries(series);
-        graph.getViewport().setMinX(1);
-        graph.getViewport().setMaxX(10);
-        graph.getViewport().setMinY(0.0);
-        graph.getViewport().setMaxY(150.0);
+    public void backToMenu(View v) {
+        startActivity(new Intent(WeightScreen.this, menu.class).putExtra("username", currentUsername));
     }
     }
 
