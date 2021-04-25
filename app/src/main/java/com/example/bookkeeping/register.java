@@ -45,7 +45,7 @@ public class register extends AppCompatActivity {
         switchbacktologin= findViewById(R.id.switchbacktologin);;
 
 
-//Registers the user to database
+        //Registers the user to database
         register_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

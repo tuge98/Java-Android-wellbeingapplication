@@ -10,7 +10,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 
-
+    // class for securing password
     public class javaHashing {
 
         @RequiresApi(api = Build.VERSION_CODES.KITKAT)

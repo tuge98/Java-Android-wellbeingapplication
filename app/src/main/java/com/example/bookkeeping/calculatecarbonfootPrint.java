@@ -40,7 +40,7 @@ public class calculatecarbonfootPrint extends AppCompatActivity {
         //jsoni.readJSON();
 
     }
-
+    // Function to take user inputs and send API request
     public void calculateCFBLEVEL(View w) {
         String beef_val = editbeefLevel.getText().toString();
         String fish_val = editfishLevel.getText().toString();
@@ -64,7 +64,7 @@ public class calculatecarbonfootPrint extends AppCompatActivity {
         }*/
 
     }
-
+    // Switch to Summary of carbon footprint information
     public void checkcarbonfootprintSummary(View w) {
        // Intent intent = new Intent(calculatecarbonfootPrint.this, carbonfootprintSummary.class);
 

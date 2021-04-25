@@ -21,6 +21,7 @@ public class menu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.s3_menu);
+        // Get username from previous intent
         if (savedInstanceState == null) {
             Bundle extras = getIntent().getExtras();
             if(extras == null) {
@@ -38,8 +39,7 @@ public class menu extends AppCompatActivity {
 
     }
 
-
-
+    // Function to switch screen to carbon footprint calculation screen
     public void switchtoCFP(View v){
         startActivity(new Intent(menu.this, calculatecarbonfootPrint.class));
     }

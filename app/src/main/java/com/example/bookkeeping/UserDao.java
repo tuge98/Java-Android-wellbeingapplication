@@ -10,6 +10,7 @@ import androidx.room.Update;
 
 import java.util.List;
 
+// Data Access object for database
 @Dao
 public interface UserDao {
 

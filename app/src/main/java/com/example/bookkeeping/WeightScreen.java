@@ -25,6 +25,8 @@ public class WeightScreen extends AppCompatActivity {
     GraphView graph;
     Button button;
     Button button2;
+    int s;
+    List<Weight> w;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,10 +43,12 @@ public class WeightScreen extends AppCompatActivity {
         }
         weightIn = (EditText) findViewById(R.id.weightinputfield);
         graph = (GraphView) findViewById(R.id.graph);
-        button = (Button) findViewById(R.id.button);
+
         button2 = (Button) findViewById(R.id.button2);
 
     }
+
+    // This function takes the user input and inserts it to database
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void addWeightToDB(View v) {
         LocalDate today = LocalDate.now();
@@ -62,9 +66,12 @@ public class WeightScreen extends AppCompatActivity {
         thread.interrupt();
 
     }
-    List<Weight> w;
-    int s;
-    public void listWeights(View v) {
+
+
+    // Function querys user's weights from database that user has inserted, then uses these weights as datapoints for a the graph
+    public void graphView(View v) {
+
+
         UserDao dao = UserDB.getInstance(getApplicationContext()).userDao();
         Runnable task = () -> {
 
@@ -86,11 +93,6 @@ public class WeightScreen extends AppCompatActivity {
         Thread thread = new Thread(task);
         thread.start();
         thread.interrupt();
-
-    }
-
-    public void graphView(View v) {
-
 
         DataPoint[] dataPoints = new DataPoint[s];
         for (int i = 0; i < s; i++) {

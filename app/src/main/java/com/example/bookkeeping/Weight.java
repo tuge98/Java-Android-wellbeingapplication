@@ -3,7 +3,7 @@ package com.example.bookkeeping;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+// Weight table and class
 @Entity(tableName = "weight_table")
 public class Weight {
     @PrimaryKey(autoGenerate = true)
