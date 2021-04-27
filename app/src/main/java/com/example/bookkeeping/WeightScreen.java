@@ -55,16 +55,22 @@ public class WeightScreen extends AppCompatActivity {
         LocalDate today = LocalDate.now();
         String dateAsStr = today.toString();
         UserDao dao = UserDB.getInstance(getApplicationContext()).userDao();
-        Weight weightInfo = new Weight(currentUsername, dateAsStr, Double.parseDouble(weightIn.getText().toString()));
-        Runnable task = () -> {
-            System.out.println("Syotetaan:" + currentUsername + ", " + dateAsStr);
-            dao.insertWeight(weightInfo);
-        };
+        try {
+            Double insertedWeight = Double.parseDouble(weightIn.getText().toString());
+            Weight weightInfo = new Weight(currentUsername, dateAsStr, insertedWeight);
+            Runnable task = () -> {
+                System.out.println("Syotetaan:" + currentUsername + ", " + dateAsStr);
+                dao.insertWeight(weightInfo);
+            };
 
 
-        Thread thread = new Thread(task);
-        thread.start();
-        thread.interrupt();
+            Thread thread = new Thread(task);
+            thread.start();
+            thread.interrupt();
+        } catch (NumberFormatException e) {
+            System.err.println("Insert a number to add it to DB");
+        }
+
 
     }
 
@@ -119,5 +125,5 @@ public class WeightScreen extends AppCompatActivity {
     public void backToMenu(View v) {
         startActivity(new Intent(WeightScreen.this, menu.class).putExtra("username", currentUsername));
     }
-    }
+}
 

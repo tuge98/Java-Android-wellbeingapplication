@@ -1,5 +1,9 @@
 package com.example.bookkeeping;
 
+import android.util.JsonReader;
+
+
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -19,6 +23,8 @@ import java.util.List;
 import javax.net.ssl.HttpsURLConnection;
 
 public class jsonrequests{
+
+
 
     //method to readJSON objects
     public List<Double> readJSON(String urli){
@@ -47,7 +53,7 @@ public class jsonrequests{
         }
         return jsonlist;
     }
-    //performs a get request to ilmastodieetti json api
+    //performs a get request to json api
     public String getJSON(String urli) {
         String response = null;
         try {
@@ -80,6 +86,46 @@ public class jsonrequests{
 
         return response;
 
+    }
+
+
+
+    public List<String> read2JSON(String url, String fruit){
+        String json = getJSON(url);
+        //System.out.println("JSON: "+ json);
+
+        List<String> jsonlist = new ArrayList<String>();
+
+        if(json != null){
+            try{
+                JSONArray jsonArray = new JSONArray(json);
+
+
+                for(int i = 0; i <jsonArray.length() ; i++){
+                    JSONObject jsonobject = jsonArray.getJSONObject(i);
+                    System.out.println(jsonobject.getString("name"));
+                    String Fruit = fruit.substring(0,1).toUpperCase() + fruit.substring(1).toLowerCase();
+                    if (jsonobject.getString("name").equals(Fruit)) {
+
+
+                        JSONObject jsonobject2 = jsonobject.getJSONObject("nutritions");
+
+                        System.out.println(jsonobject.getString("name"));
+                        System.out.println(jsonobject2.getString("calories"));
+                        jsonlist.add(Fruit);
+                        jsonlist.add(jsonobject2.getString("calories"));
+                        jsonlist.add(jsonobject2.getString("carbohydrates"));
+                        jsonlist.add(jsonobject2.getString("protein"));
+                        jsonlist.add(jsonobject2.getString("fat"));
+                        jsonlist.add(jsonobject2.getString("sugar"));
+                        break;
+                    }
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+        return jsonlist;
     }
 }
 

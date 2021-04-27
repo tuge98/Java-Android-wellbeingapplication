@@ -17,6 +17,8 @@
         <activity android:name=".WeightScreen" />
         <activity android:name=".menu" />
         <activity android:name=".InsertInfoScreen" />
+        <activity android:name=".NutritionInfo" />
+        <activity android:name=".AddUserInfo" />
         <activity
             android:name=".login"
             android:label="healthapp"

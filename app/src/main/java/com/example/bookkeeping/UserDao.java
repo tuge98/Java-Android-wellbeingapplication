@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Transaction;
 import androidx.room.Update;
@@ -32,7 +33,7 @@ public interface UserDao {
     @Insert
     void insertWeight(Weight weight);
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUserInfo(UserInfo userinfo);
 
     @Transaction

@@ -25,10 +25,8 @@ public class menu extends AppCompatActivity {
     List<Weight> w;
     List<UserInfo> uinfo;
     TextView alertMSG;
-    TextView showAge;
-    TextView showHeight;
+
     TextView showbmi;
-    int age = 0;
     int height = 0;
     double weight;
     @Override
@@ -36,8 +34,7 @@ public class menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.s3_menu);
         alertMSG = (TextView) findViewById(R.id.alertMSG);
-        showAge = (TextView) findViewById(R.id.ShowAge);
-        showHeight = (TextView) findViewById(R.id.heightShow);
+
         showbmi = (TextView) findViewById(R.id.showBMI);
         // Get username from previous intent
         if (savedInstanceState == null) {
@@ -52,12 +49,12 @@ public class menu extends AppCompatActivity {
         }
 
         System.out.println("tässä on kayttaja: " + currentUsername);
-        showUserInfo();
+        showBMI();
 
 
     }
 
-    public void showUserInfo() {
+    public void showBMI() {
         UserDao dao = UserDB.getInstance(getApplicationContext()).userDao();
 
         Runnable task = () -> {
@@ -66,21 +63,18 @@ public class menu extends AppCompatActivity {
 
             UserInfo userinfo = uinfo.userinfo;
             try {
-                age = userinfo.getAge();
+
                 height = userinfo.getHeight();
-                List<UserWithWeights> lista = dao.getUserWithWeights(currentUsername);
-                w = lista.get(0).allWeights;
+                List<UserWithWeights> list = dao.getUserWithWeights(currentUsername);
+                w = list.get(list.size() - 1).allWeights;
                 weight = w.get(0).getWeight();
             } catch (Exception e) {
                 System.out.println("No db infomation");
             }
 
-            if ((age == 0) || (height == 0)) {
-                alertMSG.setText("You have not inserted your age and height");
+            if ((height == 0)) {
+                alertMSG.setText("You have not inserted height");
             } else {
-                System.out.println("Ika" + age + "::" + height);
-                showHeight.setText(String.valueOf(height));
-                showAge.setText(String.valueOf(age));
                 double bmi = bmiCalculator(height, weight);
                 showbmi.setText(String.valueOf(round(bmi)));
             }
@@ -110,6 +104,14 @@ public class menu extends AppCompatActivity {
     public void switchToInsertInfoScreen(View v) {
         startActivity(new Intent(menu.this, InsertInfoScreen.class).putExtra("username", currentUsername));
     }
+
+    public void switchToInsertNutritionInfo(View v) {
+        startActivity(new Intent(menu.this, NutritionInfo.class).putExtra("username", currentUsername));
+    }
+    public void switchToAddUserInfo(View v) {
+        startActivity(new Intent(menu.this, AddUserInfo.class).putExtra("username", currentUsername));
+    }
+
 }
 
 
