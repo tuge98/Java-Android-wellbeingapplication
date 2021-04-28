@@ -65,7 +65,7 @@ public class menu extends AppCompatActivity {
             }
 
             if ((height == 0)) {
-                alertMSG.setText("You have not inserted height");
+                alertMSG.setText("Insert weight and height to view BMI");
             } else {
                 double bmi = bmiCalculator(height, weight);
                 showbmi.setText(String.valueOf(round(bmi)));
