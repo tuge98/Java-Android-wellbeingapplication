@@ -1,4 +1,4 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -12,11 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class NutritionInfo extends AppCompatActivity {
@@ -50,7 +45,7 @@ public class NutritionInfo extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
     }
-
+    // function uses API methods in jsonrequests to get data of fruits
     public void getInfo(View v) {
 
         Snackbar fruiNotFound = Snackbar.make(v, "Cannot find fruit, try something else.", BaseTransientBottomBar.LENGTH_SHORT);

@@ -1,18 +1,15 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import androidx.room.Embedded;
 import androidx.room.Relation;
-
-import java.util.List;
-
-// One to many relation - one user -> many weights
-public class UserWithWeights {
+// one to one relation for user information
+public class UserAndInfo {
     @Embedded
     public User user;
     @Relation(
             parentColumn = "username",
             entityColumn = "currentUser"
     )
-    public List<Weight> allWeights;
+    public UserInfo userinfo;
 
 }

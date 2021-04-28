@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.bookkeeping">
+    package="com.example.wellbeing">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -12,15 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Bookkeeping"
         android:usesCleartextTraffic="true">
-        <activity android:name=".carbonfootprintSummary"></activity>
-        <activity android:name=".calculatecarbonfootPrint" />
-        <activity android:name=".WeightScreen" />
-        <activity android:name=".menu" />
-        <activity android:name=".InsertInfoScreen" />
-        <activity android:name=".NutritionInfo" />
-        <activity android:name=".AddUserInfo" />
+        <activity android:name="com.example.wellbeing.carbonfootprintSummary"></activity>
+        <activity android:name="com.example.wellbeing.calculatecarbonfootPrint" />
+        <activity android:name="com.example.wellbeing.WeightScreen" />
+        <activity android:name="com.example.wellbeing.menu" />
+        <activity android:name="com.example.wellbeing.InsertInfoScreen" />
+        <activity android:name="com.example.wellbeing.NutritionInfo" />
+        <activity android:name="com.example.wellbeing.AddUserInfo" />
         <activity
-            android:name=".login"
+            android:name="com.example.wellbeing.login"
             android:label="healthapp"
             android:theme="@style/Theme.Bookkeeping.NoActionBar">
             <intent-filter>
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".register"
+            android:name="com.example.wellbeing.register"
             android:label="healthapp" />
     </application>
 

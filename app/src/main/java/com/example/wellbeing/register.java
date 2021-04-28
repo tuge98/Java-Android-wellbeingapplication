@@ -1,10 +1,9 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteConstraintException;
 import android.database.sqlite.SQLiteException;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.security.NoSuchAlgorithmException;
-import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -28,8 +26,7 @@ public class register extends AppCompatActivity {
     Button register_button;
     Button switchbacktologin;
 
-    public String salasana;
-    public String kayttaja;
+
     javaHashing hashingClass = new javaHashing();
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -50,23 +47,19 @@ public class register extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String invalidPassword = "Password must be atleast 12 characters, include 1 uppercase letter, 1 lowercase letter, a number, and a special character";
-                Snackbar mySnackbar = Snackbar.make(v, invalidPassword, BaseTransientBottomBar.LENGTH_SHORT);
+                Snackbar failRegister = Snackbar.make(v, invalidPassword, BaseTransientBottomBar.LENGTH_SHORT);
                 Boolean validPassword = passwordChecker(password1.getText().toString());
 
 
-                //Snackbar mySnackbar2 = Snackbar.make(v, "Username is not unique, try another", BaseTransientBottomBar.LENGTH_SHORT);
+
                 if (!validPassword) {
                     System.out.println(invalidPassword);
-                    //findViewById(R.id.textView4).setVisibility(View.VISIBLE);
-                    mySnackbar.show();
-//                } else if (!validUsername) {
-//                    System.out.println("Username is not unique, try another");
-//                    mySnackbar2.show();
+
+                    failRegister.show();
                 } else {
 
                     User user = new User(username1.getText().toString());
-                    //userdetails.setuserIDRIVI(userid.getText().toString());
-                    //userdetails.setPassword(password1.getText().toString());
+
 
 
 
@@ -79,7 +72,7 @@ public class register extends AppCompatActivity {
                         System.out.println("suola rekisteri; "+salt);
                         user.setSalt(salt);
                         user.setHash(password1_);
-                        //String password_1;
+
 
                     } catch (NoSuchAlgorithmException e) {
                         e.printStackTrace();
@@ -107,20 +100,7 @@ public class register extends AppCompatActivity {
 
 
 
-                        //Runnable is replaced with lambda
-                       /* new Thread(() -> {
-                            dbinterface.registerUser(userdetails);
 
-                            runOnUiThread(new Runnable(){
-                                @Override
-                                public void run(){
-                                    Toast.makeText(getApplicationContext(),"User registered",Toast.LENGTH_SHORT).show();
-
-                                }
-                            });
-
-                        }).start();
-                        */
 
                     }else{
                         Toast.makeText(getApplicationContext(),"Remember to fill all fields!", Toast.LENGTH_SHORT).show();
@@ -147,6 +127,7 @@ public class register extends AppCompatActivity {
     startActivity(new Intent(register.this, login.class));
 }
 
+// Function checks that password fills all requirements
     public boolean passwordChecker(String password) {
         Pattern p = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Matcher m = p.matcher(password);

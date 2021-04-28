@@ -1,4 +1,4 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -13,7 +13,7 @@ import java.util.List;
 public class calculatecarbonfootPrint extends AppCompatActivity {
     jsonrequests jsoni = new jsonrequests();
     List<Double> jsonlist2;
-
+    String currentUsername;
 
     EditText editbeefLevel, editfishLevel, editporkpoultryLevel, editdairyLevel, editcheeseLevel,editriceLevel, editeggLevel, editwintersaladLevel, editrestaurantLevel;
 
@@ -31,7 +31,16 @@ public class calculatecarbonfootPrint extends AppCompatActivity {
         editwintersaladLevel = findViewById(R.id.editwintersaladLevel);
         editrestaurantLevel = findViewById(R.id.editrestaurantLevel);
         editeggLevel = findViewById(R.id.editeggLevel);
-
+        if (savedInstanceState == null) {
+            Bundle extras = getIntent().getExtras();
+            if(extras == null) {
+                currentUsername= null;
+            } else {
+                currentUsername= extras.getString("username");
+            }
+        } else {
+            currentUsername= (String) savedInstanceState.getSerializable("username");
+        }
 
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -67,15 +76,29 @@ public class calculatecarbonfootPrint extends AppCompatActivity {
     // Switch to Summary of carbon footprint information
     public void checkcarbonfootprintSummary(View w) {
        // Intent intent = new Intent(calculatecarbonfootPrint.this, carbonfootprintSummary.class);
+        UserDao dao = UserDB.getInstance(getApplicationContext()).userDao();
+        try {
 
-        Intent intent = new Intent(calculatecarbonfootPrint.this, carbonfootprintSummary.class);
-        //Bundle b = new Bundle();
-        intent.putExtra("Dairy", jsonlist2.get(0));
-        intent.putExtra("Meat", jsonlist2.get(1));
-        intent.putExtra("Plant", jsonlist2.get(2));
-        intent.putExtra("Restaurant", jsonlist2.get(3));
-        intent.putExtra("Total", jsonlist2.get(4));
-        startActivity(intent);
+            CarbonFootPrint carbonFootPrint = new CarbonFootPrint(currentUsername, jsonlist2.get(0),  jsonlist2.get(1), jsonlist2.get(2), jsonlist2.get(3), jsonlist2.get(4));
+            Runnable task = () -> {
+                dao.insertCFP(carbonFootPrint);
+            };
 
+
+            Thread thread = new Thread(task);
+            thread.start();
+            thread.interrupt();
+            Intent intent = new Intent(calculatecarbonfootPrint.this, carbonfootprintSummary.class);
+            //Bundle b = new Bundle();
+            intent.putExtra("Dairy", jsonlist2.get(0));
+            intent.putExtra("Meat", jsonlist2.get(1));
+            intent.putExtra("Plant", jsonlist2.get(2));
+            intent.putExtra("Restaurant", jsonlist2.get(3));
+            intent.putExtra("Total", jsonlist2.get(4));
+            startActivity(intent);
+
+        } catch (Exception e) {
+            System.err.println("Failed to add information to database");
+        }
     }
 }

@@ -1,29 +1,21 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.view.View;
 import android.widget.TextView;
 
-import org.json.JSONException;
-import org.w3c.dom.Text;
-
-import java.io.IOException;
 import java.util.List;
 
-import static android.icu.text.Normalizer.NO;
 import static java.lang.Math.round;
 
 
 public class menu extends AppCompatActivity {
     String currentUsername;
     List<Weight> w;
-    List<UserInfo> uinfo;
+    //List<UserInfo> uinfo;
     TextView alertMSG;
 
     TextView showbmi;
@@ -48,12 +40,12 @@ public class menu extends AppCompatActivity {
             currentUsername= (String) savedInstanceState.getSerializable("username");
         }
 
-        System.out.println("tässä on kayttaja: " + currentUsername);
+
         showBMI();
 
 
     }
-
+    // takes weight and height from DB and uses them for BMI
     public void showBMI() {
         UserDao dao = UserDB.getInstance(getApplicationContext()).userDao();
 
@@ -86,15 +78,16 @@ public class menu extends AppCompatActivity {
         thread.interrupt();
 
     }
-
+    //Calculates BMI
     public double bmiCalculator(int height, double weight) {
         System.out.println(weight + ":::" + height);
         return weight / ((height/100.0) * (height/100.0)) ;
     }
 
-    // Function to switch screen to carbon footprint calculation screen
+    // Functions to switch screen
+
     public void switchtoCFP(View v){
-        startActivity(new Intent(menu.this, calculatecarbonfootPrint.class));
+        startActivity(new Intent(menu.this, calculatecarbonfootPrint.class).putExtra("username", currentUsername));
     }
 
     public void switchToWeightScreen(View v) {
@@ -115,4 +108,3 @@ public class menu extends AppCompatActivity {
 }
 
 
-//Menu class

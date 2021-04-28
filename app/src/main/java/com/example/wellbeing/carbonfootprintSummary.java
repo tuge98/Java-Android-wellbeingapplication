@@ -1,4 +1,4 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,6 @@ import com.jjoe64.graphview.ValueDependentColor;
 import com.jjoe64.graphview.helper.StaticLabelsFormatter;
 import com.jjoe64.graphview.series.BarGraphSeries;
 import com.jjoe64.graphview.series.DataPoint;
-import com.jjoe64.graphview.series.LineGraphSeries;
 
 // Here the carbon footprint information is received and plotted
 public class carbonfootprintSummary extends AppCompatActivity {

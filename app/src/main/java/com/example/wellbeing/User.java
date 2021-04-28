@@ -1,6 +1,5 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
-import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;

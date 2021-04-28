@@ -1,6 +1,5 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
-import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -36,6 +35,10 @@ public interface UserDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void insertUserInfo(UserInfo userinfo);
 
+    @Insert
+    void insertCFP(CarbonFootPrint carbonFootPrint);
+
+
     @Transaction
     @Query("SELECT * FROM user_table WHERE username = :username")
     List<UserWithWeights> getUserWithWeights(String username);
@@ -49,6 +52,10 @@ public interface UserDao {
     @Transaction
     @Query("SELECT * FROM user_table WHERE username = :username")
     UserAndInfo getUserAndInfo(String username);
+
+    @Transaction
+    @Query("SELECT * FROM user_table WHERE username = :username")
+    UserWithCarbonFootPrint getUserWithCarbonFootPrint(String username);
 
 
 

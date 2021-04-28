@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.example.bookkeeping"
+        applicationId "com.example.wellbeing"
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 1
@@ -42,4 +42,5 @@ dependencies {
     annotationProcessor 'androidx.room:room-compiler:2.2.6'
     implementation "androidx.room:room-runtime:2.2.6"
     implementation 'com.jjoe64:graphview:4.2.2'
+
 }

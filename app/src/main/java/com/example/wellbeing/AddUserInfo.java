@@ -1,10 +1,9 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.annotation.RequiresApi;
@@ -14,7 +13,6 @@ import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import static java.lang.Math.round;
 
@@ -44,7 +42,7 @@ public class AddUserInfo extends AppCompatActivity {
         editheight = findViewById(R.id.editHeight);
         editweight = findViewById(R.id.editWeight);
     }
-
+    //adds user info to database
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void addToDB(View v) {
         LocalDate today = LocalDate.now();

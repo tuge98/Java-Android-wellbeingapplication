@@ -1,4 +1,4 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import android.content.Intent;
 import android.os.Build;
@@ -16,9 +16,6 @@ import android.widget.Toast;
 
 import com.google.android.material.snackbar.BaseTransientBottomBar;
 import com.google.android.material.snackbar.Snackbar;
-
-import java.nio.charset.StandardCharsets;
-import java.security.NoSuchAlgorithmException;
 
 public class login extends AppCompatActivity {
     Button loginButton;
@@ -62,32 +59,29 @@ public class login extends AppCompatActivity {
                 public void run() {
 
 
-                    User user = dao.login(usernametocheck);//passwordtocheck
-
-                    //dbinterface.deleteAll();
-
-                    String passwordconverter = user.getHash();
-                    byte[] byteconverter = user.getSalt();
-
-                    System.out.println(passwordconverter);
-
-                    String test_final_password = hashingClass.getSecurePassword(passwordtocheck, byteconverter);
-
-                    String test_final_username = user.getUsername();
+                    User user = dao.login(usernametocheck);
 
 
-
-
-                    if(usernametocheck.equals(test_final_username) && passwordconverter.equals(test_final_password)){
+                    try {
+                        String passwordconverter = user.getHash();
+                        String test_final_username = user.getUsername();
+                        byte[] byteconverter = user.getSalt();
+                        String test_final_password = hashingClass.getSecurePassword(passwordtocheck, byteconverter);
+                        if(usernametocheck.equals(test_final_username) && passwordconverter.equals(test_final_password)){
 
                             startActivity(new Intent(login.this, menu.class).putExtra("username", usernametocheck));
-                    }else{
-                    runOnUiThread(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Invalid credentials.", Toast.LENGTH_SHORT).show();
-                            }
-                        });}
+                        }else{
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    Toast.makeText(getApplicationContext(), "Invalid credentials.", Toast.LENGTH_SHORT).show();
+                                }
+                            });}
+                    } catch (NullPointerException e) {
+                            Snackbar failLogin = Snackbar.make(v, "Wrong password, try again.", BaseTransientBottomBar.LENGTH_SHORT);
+                            failLogin.show();
+                    }
+
                 }
             }).start();
         }

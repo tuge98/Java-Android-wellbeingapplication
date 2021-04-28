@@ -1,8 +1,8 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
-
+// table and class for user's information
 @Entity (tableName = "user_info_table")
 public class UserInfo {
 

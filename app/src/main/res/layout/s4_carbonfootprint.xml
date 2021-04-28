@@ -8,161 +8,156 @@
 
     <EditText
         android:id="@+id/editbeefLevel"
-        android:layout_width="210dp"
-        android:layout_height="53dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="294dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="Percentage of Beef consumption"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editfishLevel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
         android:id="@+id/editfishLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_width="292dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Percentage of Fish consumption"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editporkpoultryLevel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editbeefLevel" />
 
     <EditText
         android:id="@+id/editporkpoultryLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_width="292dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Percentage of Pork and Poultry"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editdairyLevel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.119"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editfishLevel" />
 
     <EditText
         android:id="@+id/editdairyLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="4dp"
+        android:layout_width="289dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Percentage of Dairy consumption"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editcheeseLevel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editporkpoultryLevel" />
 
     <EditText
         android:id="@+id/editcheeseLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="285dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Percentage of Cheese consumption"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editriceLevel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editdairyLevel" />
 
     <EditText
         android:id="@+id/editriceLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="287dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Percentage of Rice consumption"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editeggLevel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editcheeseLevel" />
 
     <EditText
         android:id="@+id/editeggLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="287dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Percentage of Egg consumption"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/editwintersaladLevel"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editriceLevel" />
 
     <EditText
         android:id="@+id/editwintersaladLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="140dp"
+        android:layout_width="288dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
         android:hint="Percentage of winter salad"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editeggLevel" />
 
     <EditText
         android:id="@+id/editrestaurantLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="285dp"
+        android:layout_height="46dp"
+        android:layout_marginTop="5dp"
         android:ems="10"
-        android:hint="Monthly restaurant spending, in euros"
+        android:hint="Monthly restaurant spending (€)"
         android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.129"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editwintersaladLevel"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/editwintersaladLevel" />
 
     <Button
         android:id="@+id/calculator"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="204dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="10dp"
         android:onClick="calculateCFBLEVEL"
         android:text="calculate"
-        app:backgroundTint="#E91E63"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:backgroundTint="#4CAF50"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
-        app:layout_constraintStart_toEndOf="@+id/editcheeseLevel"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.468" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editrestaurantLevel" />
 
     <Button
         android:id="@+id/summaryButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="207dp"
+        android:layout_height="43dp"
+        android:layout_marginBottom="10dp"
         android:onClick="checkcarbonfootprintSummary"
         android:text="Check summary"
-        app:backgroundTint="#E91E63"
+        app:backgroundTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calculator"
-        app:layout_constraintVertical_bias="0.123" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="122dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="198dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
         android:text="Please fill the forms"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.089"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

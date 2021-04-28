@@ -1,6 +1,5 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
-import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 // Weight table and class

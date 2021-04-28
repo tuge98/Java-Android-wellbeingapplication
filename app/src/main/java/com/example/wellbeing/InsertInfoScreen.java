@@ -1,9 +1,8 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,7 +35,7 @@ public class InsertInfoScreen extends AppCompatActivity {
         }
 
     }
-
+    // Takes user input and saves information to db
     public void insertInfo(View v) {
         if ((heightIn.getText().toString() != null) || (ageIn.getText().toString() != null)) {
             UserDao dao = UserDB.getInstance(getApplicationContext()).userDao();

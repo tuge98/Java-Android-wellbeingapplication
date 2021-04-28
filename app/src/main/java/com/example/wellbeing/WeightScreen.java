@@ -1,4 +1,4 @@
-package com.example.bookkeeping;
+package com.example.wellbeing;
 
 import android.content.Intent;
 import android.os.Build;
@@ -14,10 +14,7 @@ import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.series.DataPoint;
 import com.jjoe64.graphview.series.LineGraphSeries;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 public class WeightScreen extends AppCompatActivity {
@@ -59,7 +56,7 @@ public class WeightScreen extends AppCompatActivity {
             Double insertedWeight = Double.parseDouble(weightIn.getText().toString());
             Weight weightInfo = new Weight(currentUsername, dateAsStr, insertedWeight);
             Runnable task = () -> {
-                System.out.println("Syotetaan:" + currentUsername + ", " + dateAsStr);
+
                 dao.insertWeight(weightInfo);
             };
 
