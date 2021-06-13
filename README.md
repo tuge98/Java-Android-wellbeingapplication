@@ -4,7 +4,7 @@ application by Tuukka and Julius
 *Documentation (Finnish):*
 https://lut-my.sharepoint.com/:b:/g/personal/julius_frisk_student_lut_fi/Ea1K74J_TqRAgKjvUWWzffEB4rmUoUNmgMouN7qBu0Dltg?e=wFVMau
 
-Currently the application has 22 classes.
+Currently the application has 22 classes. Android Room SQL database
 
 couple examples of the application below:
 
